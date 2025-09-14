@@ -582,6 +582,17 @@
                 font-size: 0.75rem;
             }
             
+            /* Fix column offset on mobile - remove left margin */
+            .cds--offset-lg-2 {
+                margin-left: 0 !important;
+            }
+            
+            /* Ensure columns take full width on mobile */
+            .cds--col-lg-12 {
+                flex: 0 0 100% !important;
+                max-width: 100% !important;
+            }
+            
             /* Hide desktop navigation on mobile */
             .cds--header__nav--desktop {
                 display: none !important;
@@ -603,7 +614,6 @@
             .cds--side-nav--mobile {
                 display: none !important;
             }
-        }
         }
         
         /* Mobile Side Navigation Styles */
@@ -628,15 +638,43 @@
             display: flex;
             justify-content: flex-end;
             padding: 1rem;
-            border-bottom: 1px solid var(--cds-ui-03);
+            border-bottom: 1px solid var(--cds-border-subtle);
+            background-color: var(--cds-layer);
         }
         
         .cds--side-nav__close {
-            background: none;
+            background: transparent;
             border: none;
-            color: var(--cds-text-primary);
+            color: var(--cds-icon-primary);
             cursor: pointer;
-            padding: 0.5rem;
+            padding: 0.75rem;
+            border-radius: 0.125rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 70ms cubic-bezier(0.2, 0, 0.38, 0.9);
+            width: 3rem;
+            height: 3rem;
+            position: relative;
+        }
+        
+        .cds--side-nav__close:hover {
+            background-color: var(--cds-layer-hover);
+        }
+        
+        .cds--side-nav__close:focus {
+            outline: 2px solid var(--cds-focus);
+            outline-offset: -2px;
+        }
+        
+        .cds--side-nav__close:active {
+            background-color: var(--cds-layer-active);
+        }
+        
+        .cds--side-nav__close-icon {
+            fill: currentColor;
+            width: 16px;
+            height: 16px;
         }
         
         .cds--side-nav__items {
@@ -767,8 +805,8 @@
     <nav class="cds--side-nav cds--side-nav--ux cds--side-nav--mobile" aria-label="Side navigation">
         <div class="cds--side-nav__header">
             <button class="cds--side-nav__toggle cds--side-nav__close" type="button" title="Close menu" aria-label="Close menu">
-                <svg class="cds--side-nav__close-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
-                    <path d="M10 6.586L15.414 1.172a1 1 0 0 1 1.414 1.414L11.414 8l5.414 5.414a1 1 0 0 1-1.414 1.414L10 9.414l-5.414 5.414a1 1 0 0 1-1.414-1.414L8.586 10 3.172 4.586a1 1 0 0 1 1.414-1.414L10 8.586z"/>
+                <svg class="cds--side-nav__close-icon" width="16" height="16" viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4 14.6 16 8 22.6 9.4 24 16 17.4 22.6 24 24 22.6 17.4 16 24 9.4z"/>
                 </svg>
             </button>
         </div>
@@ -959,30 +997,62 @@
             const sideNav = document.querySelector('.cds--side-nav--mobile');
             const closeButton = document.querySelector('.cds--side-nav__close');
             
-            // Open mobile menu
-            menuTrigger?.addEventListener('click', function() {
-                sideNav?.classList.add('cds--side-nav--expanded');
+            console.log('Mobile navigation elements:', {
+                menuTrigger: !!menuTrigger,
+                sideNav: !!sideNav,
+                closeButton: !!closeButton
             });
             
+            // Open mobile menu
+            if (menuTrigger) {
+                menuTrigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Opening mobile menu');
+                    if (sideNav) {
+                        sideNav.classList.add('cds--side-nav--expanded');
+                    }
+                });
+            }
+            
             // Close mobile menu
-            closeButton?.addEventListener('click', function() {
-                sideNav?.classList.remove('cds--side-nav--expanded');
-            });
+            if (closeButton) {
+                closeButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Closing mobile menu via close button');
+                    if (sideNav) {
+                        sideNav.classList.remove('cds--side-nav--expanded');
+                    }
+                });
+            }
             
             // Close menu when clicking outside
             document.addEventListener('click', function(event) {
-                if (sideNav?.classList.contains('cds--side-nav--expanded') && 
-                    !sideNav.contains(event.target) && 
-                    !menuTrigger?.contains(event.target)) {
-                    sideNav.classList.remove('cds--side-nav--expanded');
+                if (sideNav && sideNav.classList.contains('cds--side-nav--expanded')) {
+                    if (!sideNav.contains(event.target) && 
+                        (!menuTrigger || !menuTrigger.contains(event.target))) {
+                        console.log('Closing mobile menu via outside click');
+                        sideNav.classList.remove('cds--side-nav--expanded');
+                    }
                 }
             });
             
             // Close menu when pressing Escape
             document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && sideNav?.classList.contains('cds--side-nav--expanded')) {
+                if (event.key === 'Escape' && sideNav && sideNav.classList.contains('cds--side-nav--expanded')) {
+                    console.log('Closing mobile menu via Escape key');
                     sideNav.classList.remove('cds--side-nav--expanded');
                 }
+            });
+            
+            // Close menu when clicking on menu items
+            const menuLinks = document.querySelectorAll('.cds--side-nav__link');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Closing mobile menu via menu link click');
+                    if (sideNav) {
+                        sideNav.classList.remove('cds--side-nav--expanded');
+                    }
+                });
             });
         });
     </script>
