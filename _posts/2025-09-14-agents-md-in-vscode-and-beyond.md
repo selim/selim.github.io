@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AGENTS.md: Agents promting in VSCode and Beyond"
+title: "AGENTS.md: Agents prompting in VSCode and Beyond"
 date: 2025-09-14 12:00:00 +0300
 categories: [development, ai-ml-data]
 description: "VSCode update for AGENTS.md"
