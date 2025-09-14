@@ -1,1 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-14T14:46:04-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Selim BAĞCILAR</title><subtitle>A space for exploring software architecture, development, infrastructure and the best practices that make technology work better.</subtitle><author><name>Selim BAĞCILAR</name></author></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-14T15:40:32-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Selim BAĞCILAR</title><subtitle>A space for exploring software architecture, development, infrastructure and the best practices that make technology work better.</subtitle><author><name>Selim BAĞCILAR</name></author><entry><title type="html">AGENTS.md: The Essential Guide for AI-Powered Development in VSCode and Beyond</title><link href="http://localhost:4000/2025/09/14/agents-md-in-vscode-and-beyond/" rel="alternate" type="text/html" title="AGENTS.md: The Essential Guide for AI-Powered Development in VSCode and Beyond" /><published>2025-09-14T05:00:00-04:00</published><updated>2025-09-14T05:00:00-04:00</updated><id>http://localhost:4000/2025/09/14/agents-md-in-vscode-and-beyond</id><content type="html" xml:base="http://localhost:4000/2025/09/14/agents-md-in-vscode-and-beyond/"><![CDATA[<p>The landscape of AI-assisted development needs for standardized ways to communicate with AI coding agents.</p>
+
+<h2 id="what-is-agentsmd">What is AGENTS.md?</h2>
+
+<p>AGENTS.md is a simple, open format for guiding coding agents. Think of it as a README file, but for AI Models. Rather than introducing another proprietary file, we chose a name and format that could work across multiple AI development tools and platforms.</p>
+
+<p>While READMEs are optimized for developers—covering project introductions, contribution guidelines, and quick starts; AGENTS.md serves as a predictable, structured location for agent-specific instructions. These include setup commands, testing workflows, coding style preferences, and pull request guidelines. Think of AGENTS.md as a README for agents: a dedicated, predictable place to provide context and instructions to help AI coding agents work on your project.</p>
+
+<h2 id="vscodes-agent-mode-updates">VSCode’s Agent Mode Updates</h2>
+
+<p>Microsoft introduced agent mode in February 2025 with VSCode version 1.98 as a preview feature, and made it available in VSCode Stable with version 1.99 (March 2025). The feature received significant enhancements in May 2025 (version 1.101) with full MCP (Model Context Protocol) support becoming available to all users, making VSCode one of the most powerful AI-assisted development environments available.</p>
+
+<p>The latest VSCode agent mode includes several groundbreaking features:</p>
+
+<ol>
+  <li>
+    <p><strong>AGENTS.md Support (August 2025)</strong>: Copilot coding agent now supports AGENTS.md custom instructions, allowing you to create a single AGENTS.md file in the root of your repository or nested files for specific parts of your project</p>
+  </li>
+  <li>
+    <p><strong>Prompt Files (January 2025)</strong>: Prompt files allow you and your team to build, store, and share reusable prompts with pre-defined instructions and context for GitHub Copilot Chat and Copilot Edits</p>
+  </li>
+  <li>
+    <p><strong>Autonomous Context Detection</strong>: In agent mode, Copilot will iterate on not just its own output, but the result of that output, and it will iterate until it has completed all the subtasks required to complete your prompt</p>
+  </li>
+  <li>
+    <p><strong>GitHub Integration</strong>: Launch Copilot coding agent tasks from anywhere on GitHub - just describe your goal in natural language and select the relevant repository</p>
+  </li>
+</ol>
+
+<h2 id="integration-with-development-tools">Integration with Development Tools</h2>
+
+<p>The beauty of AGENTS.md lies in its universal compatibility. The format is designed to be portable across the growing ecosystem of AI-assisted development tools, including OpenAI’s Codex, Google’s Jules, Cursor, Aider, RooCode, and Zenith.</p>
+
+<p>This standardization means you can write one AGENTS.md file and use it across multiple AI development tools, eliminating the need for tool-specific configuration files.</p>
+
+<h2 id="best-practices-for-agentsmd">Best Practices for AGENTS.md</h2>
+
+<p>Based on community feedback and real-world usage:</p>
+
+<ol>
+  <li><strong>Keep it focused</strong>: Unlike READMEs, AGENTS.md should be laser-focused on actionable instructions for agents</li>
+  <li><strong>Be explicit</strong>: Agents work better with precise, unambiguous instructions</li>
+  <li><strong>Include examples</strong>: Provide code examples and command samples where possible</li>
+  <li><strong>Update regularly</strong>: Keep the file current with your project’s evolution</li>
+  <li><strong>Test with agents</strong>: Regularly test your AGENTS.md file with actual AI coding assistants</li>
+</ol>
+
+<hr />
+
+<p><em>Want to learn more about AGENTS.md? Visit <a href="https://agents.md">agents.md</a> for the latest specifications and examples. For VSCode agent mode documentation, check out the <a href="https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode">official VSCode documentation</a>.</em></p>]]></content><author><name>Selim BAĞCILAR</name></author><category term="development" /><category term="ai-ml-data" /><summary type="html"><![CDATA[Discover how AGENTS.md is revolutionizing AI-assisted development and explore VSCode's powerful new agent mode features for seamless coding workflows.]]></summary></entry></feed>
