@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "AGENTS.md: The Essential Guide for AI-Powered Development in VSCode and Beyond"
+title: "AGENTS.md: Agents promting in VSCode and Beyond"
 date: 2025-09-14 12:00:00 +0300
 categories: [development, ai-ml-data]
-description: "Discover how AGENTS.md is revolutionizing AI-assisted development and explore VSCode's powerful new agent mode features for seamless coding workflows."
+description: "VSCode update for AGENTS.md"
 ---
 
 The landscape of AI-assisted development needs for standardized ways to communicate with AI coding agents. 
