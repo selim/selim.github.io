@@ -541,17 +541,89 @@
             padding: 2rem 0;
         }
         
-        /* Mobile Navigation - Default Hidden */
-        .cds--header__menu-trigger {
-            background: none;
-            border: none;
-            color: var(--cds-text-primary);
-            cursor: pointer;
-            padding: 0.75rem;
-            margin-right: 1rem;
+        /* Mobile Name Display Styles */
+        .cds--header__mobile-name {
             display: none;
             align-items: center;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .cds--header__name-text {
+            color: var(--cds-text-primary);
+        }
+        
+        .cds--header__name--desktop {
+            display: block;
+        }
+        
+        /* Mobile Navigation Panel Styles */
+        .cds--mobile-nav-panel {
+            display: none;
+            background-color: var(--cds-layer);
+            border-bottom: 1px solid var(--cds-border-subtle);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            z-index: 7999;
+            position: relative;
+        }
+        
+        .cds--mobile-nav__items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+        }
+        
+        .cds--mobile-nav__item {
+            border-right: 1px solid var(--cds-border-subtle);
+        }
+        
+        .cds--mobile-nav__item:last-child {
+            border-right: none;
+        }
+        
+        .cds--mobile-nav__link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
+            padding: 0.75rem 0.25rem;
+            color: var(--cds-text-primary);
+            text-decoration: none;
+            transition: background-color 0.15s ease;
+            min-height: 3.5rem;
+            text-align: center;
+        }
+        
+        .cds--mobile-nav__link:hover {
+            background-color: var(--cds-layer-hover);
+        }
+        
+        .cds--mobile-nav__icon {
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cds--mobile-nav__link-text {
+            font-size: 0.65rem;
+            font-weight: 400;
+            line-height: 1;
+        }
+        
+        @media (max-width: 480px) {
+            .cds--mobile-nav__link {
+                padding: 0.75rem 0.125rem;
+            }
+            
+            .cds--mobile-nav__link-text {
+                font-size: 0.6rem;
+            }
         }
         
         /* Responsive adjustments */
@@ -648,9 +720,19 @@
                 display: none !important;
             }
             
-            /* Show mobile menu button */
-            .cds--header__menu-trigger {
+            /* Hide desktop header name */
+            .cds--header__name--desktop {
+                display: none !important;
+            }
+            
+            /* Show mobile name */
+            .cds--header__mobile-name {
                 display: flex !important;
+            }
+            
+            /* Show mobile nav panel */
+            .cds--mobile-nav-panel {
+                display: block !important;
             }
             
             /* Blog specific mobile optimizations */
@@ -681,14 +763,19 @@
         }
         
         @media (min-width: 769px) {
-            /* Hide mobile menu button on desktop */
-            .cds--header__menu-trigger {
+            /* Hide mobile name on desktop */
+            .cds--header__mobile-name {
                 display: none !important;
             }
             
-            /* Hide mobile side nav on desktop */
-            .cds--side-nav--mobile {
+            /* Hide mobile nav panel on desktop */
+            .cds--mobile-nav-panel {
                 display: none !important;
+            }
+            
+            /* Show desktop header name */
+            .cds--header__name--desktop {
+                display: block !important;
             }
         }
         
@@ -736,96 +823,6 @@
             }
         }
         
-        /* Mobile Side Navigation Styles */
-        .cds--side-nav--mobile {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 16rem;
-            height: 100vh;
-            background-color: var(--cds-ui-background);
-            border-right: 1px solid var(--cds-ui-03);
-            z-index: 9999;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        .cds--side-nav--mobile.cds--side-nav--expanded {
-            transform: translateX(0);
-        }
-        
-        .cds--side-nav__header {
-            display: flex;
-            justify-content: flex-end;
-            padding: 1rem;
-            border-bottom: 1px solid var(--cds-border-subtle);
-            background-color: var(--cds-layer);
-        }
-        
-        .cds--side-nav__close {
-            background: transparent;
-            border: none;
-            color: var(--cds-icon-primary);
-            cursor: pointer;
-            padding: 0.75rem;
-            border-radius: 0.125rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 70ms cubic-bezier(0.2, 0, 0.38, 0.9);
-            width: 3rem;
-            height: 3rem;
-            position: relative;
-        }
-        
-        .cds--side-nav__close:hover {
-            background-color: var(--cds-layer-hover);
-        }
-        
-        .cds--side-nav__close:focus {
-            outline: 2px solid var(--cds-focus);
-            outline-offset: -2px;
-        }
-        
-        .cds--side-nav__close:active {
-            background-color: var(--cds-layer-active);
-        }
-        
-        .cds--side-nav__close-icon {
-            fill: currentColor;
-            width: 16px;
-            height: 16px;
-        }
-        
-        .cds--side-nav__items {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .cds--side-nav__item {
-            border-bottom: 1px solid var(--cds-ui-03);
-        }
-        
-        .cds--side-nav__link {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            color: var(--cds-text-primary);
-            text-decoration: none;
-            transition: background-color 0.15s ease;
-        }
-        
-        .cds--side-nav__link:hover {
-            background-color: var(--cds-ui-03);
-        }
-        
-        .cds--side-nav__icon {
-            margin-right: 0.75rem;
-            display: flex;
-            align-items: center;
-        }
-        
         @media (min-width: 769px) and (max-width: 1055px) {
             .cds--content {
                 padding: 2.5rem 0;
@@ -861,15 +858,12 @@
     <!-- Carbon UI Shell Header -->
         <!-- Carbon UI Shell Header with Responsive Menu -->
     <header class="cds--header" role="banner">
-        <!-- Mobile Menu Button -->
-        <button class="cds--header__action cds--header__menu-trigger cds--header__menu-toggle" 
-                aria-label="Open menu" title="Open menu" type="button">
-            <svg class="cds--header__menu-trigger__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
-                <path d="M2 14.8h16V16H2zm0-3.6h16v1.2H2zm0-3.6h16v1.2H2z"/>
-            </svg>
-        </button>
+        <!-- Mobile Name Display (no button) -->
+        <div class="cds--header__mobile-name">
+            <span class="cds--header__name-text">Selim BAĞCILAR</span>
+        </div>
         
-        <div class="cds--header__name">
+        <div class="cds--header__name cds--header__name--desktop">
             <a href="/">Selim BAĞCILAR</a>
         </div>
         
@@ -922,64 +916,60 @@
     </header>
 
     <!-- Mobile Side Navigation Panel -->
-    <nav class="cds--side-nav cds--side-nav--ux cds--side-nav--mobile" aria-label="Side navigation">
-        <div class="cds--side-nav__header">
-            <button class="cds--side-nav__toggle cds--side-nav__close" type="button" title="Close menu" aria-label="Close menu">
-                <svg class="cds--side-nav__close-icon" width="16" height="16" viewBox="0 0 32 32" aria-hidden="true">
-                    <path d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4 14.6 16 8 22.6 9.4 24 16 17.4 22.6 24 24 22.6 17.4 16 24 9.4z"/>
-                </svg>
-            </button>
-        </div>
-        <ul class="cds--side-nav__items">
-            <li class="cds--side-nav__item">
-                <a class="cds--side-nav__link" href="/">
-                    <div class="cds--side-nav__icon">
+        </header>
+
+    <!-- Mobile Navigation Panel (below header) -->
+    <nav class="cds--mobile-nav-panel" aria-label="Mobile navigation">
+        <ul class="cds--mobile-nav__items">
+            <li class="cds--mobile-nav__item">
+                <a class="cds--mobile-nav__link" href="/">
+                    <div class="cds--mobile-nav__icon">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <path d="M8 1L1 6v9h4V9h6v6h4V6L8 1zm0 2.53L13 8v5h-2V9H5v4H3V8l5-4.47z"/>
                         </svg>
                     </div>
-                    <span class="cds--side-nav__link-text">Home</span>
+                    <span class="cds--mobile-nav__link-text">Home</span>
                 </a>
             </li>
-            <li class="cds--side-nav__item">
-                <a class="cds--side-nav__link" href="/blog/">
-                    <div class="cds--side-nav__icon">
+            <li class="cds--mobile-nav__item">
+                <a class="cds--mobile-nav__link" href="/blog/">
+                    <div class="cds--mobile-nav__icon">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <path d="M4 3h8v1H4V3zm0 3h8v1H4V6zm0 3h6v1H4V9zm0 3h4v1H4v-1zM2 3v10h12V3H2zm11 9H3V4h10v8z"/>
                         </svg>
                     </div>
-                    <span class="cds--side-nav__link-text">Blog</span>
+                    <span class="cds--mobile-nav__link-text">Blog</span>
                 </a>
             </li>
-            <li class="cds--side-nav__item">
-                <a class="cds--side-nav__link" href="/category/">
-                    <div class="cds--side-nav__icon">
+            <li class="cds--mobile-nav__item">
+                <a class="cds--mobile-nav__link" href="/category/">
+                    <div class="cds--mobile-nav__icon">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <path d="M1 1h6v6H1V1zm8 0h6v6H9V1zM1 9h6v6H1V9zm8 0h6v6H9V9z"/>
                         </svg>
                     </div>
-                    <span class="cds--side-nav__link-text">Categories</span>
+                    <span class="cds--mobile-nav__link-text">Categories</span>
                 </a>
             </li>
-            <li class="cds--side-nav__item">
-                <a class="cds--side-nav__link" href="/about">
-                    <div class="cds--side-nav__icon">
+            <li class="cds--mobile-nav__item">
+                <a class="cds--mobile-nav__link" href="/about">
+                    <div class="cds--mobile-nav__icon">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/>
                             <path d="M7 4h2v2H7zM7 7h2v5H7z"/>
                         </svg>
                     </div>
-                    <span class="cds--side-nav__link-text">About</span>
+                    <span class="cds--mobile-nav__link-text">About</span>
                 </a>
             </li>
-            <li class="cds--side-nav__item">
-                <a class="cds--side-nav__link" href="/contact">
-                    <div class="cds--side-nav__icon">
+            <li class="cds--mobile-nav__item">
+                <a class="cds--mobile-nav__link" href="/contact">
+                    <div class="cds--mobile-nav__icon">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <path d="M1 3h14c.6 0 1 .4 1 1v8c0 .6-.4 1-1 1H1c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1zm0 1v.5l7 3.5 7-3.5V4H1zm0 2v6h14V6L8 9.5 1 6z"/>
                         </svg>
                     </div>
-                    <span class="cds--side-nav__link-text">Contact</span>
+                    <span class="cds--mobile-nav__link-text">Contact</span>
                 </a>
             </li>
         </ul>
@@ -1063,71 +1053,10 @@
         </div>
     </footer>
 
-    <!-- Mobile Navigation JavaScript -->
+    <!-- Mobile Navigation - Always Visible on Mobile -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuTrigger = document.querySelector('.cds--header__menu-trigger');
-            const sideNav = document.querySelector('.cds--side-nav--mobile');
-            const closeButton = document.querySelector('.cds--side-nav__close');
-            
-            console.log('Mobile navigation elements:', {
-                menuTrigger: !!menuTrigger,
-                sideNav: !!sideNav,
-                closeButton: !!closeButton
-            });
-            
-            // Open mobile menu
-            if (menuTrigger) {
-                menuTrigger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('Opening mobile menu');
-                    if (sideNav) {
-                        sideNav.classList.add('cds--side-nav--expanded');
-                    }
-                });
-            }
-            
-            // Close mobile menu
-            if (closeButton) {
-                closeButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('Closing mobile menu via close button');
-                    if (sideNav) {
-                        sideNav.classList.remove('cds--side-nav--expanded');
-                    }
-                });
-            }
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (sideNav && sideNav.classList.contains('cds--side-nav--expanded')) {
-                    if (!sideNav.contains(event.target) && 
-                        (!menuTrigger || !menuTrigger.contains(event.target))) {
-                        console.log('Closing mobile menu via outside click');
-                        sideNav.classList.remove('cds--side-nav--expanded');
-                    }
-                }
-            });
-            
-            // Close menu when pressing Escape
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && sideNav && sideNav.classList.contains('cds--side-nav--expanded')) {
-                    console.log('Closing mobile menu via Escape key');
-                    sideNav.classList.remove('cds--side-nav--expanded');
-                }
-            });
-            
-            // Close menu when clicking on menu items
-            const menuLinks = document.querySelectorAll('.cds--side-nav__link');
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    console.log('Closing mobile menu via menu link click');
-                    if (sideNav) {
-                        sideNav.classList.remove('cds--side-nav--expanded');
-                    }
-                });
-            });
-        });
+        // No JavaScript needed - mobile nav is always visible on mobile devices
+        console.log('Mobile navigation: Always visible mode enabled');
     </script>
 </body>
 </html>
