@@ -7,8 +7,8 @@ permalink: /category/
 <div class="cds--grid cds--grid--condensed cds--grid--full-width">
     <div class="cds--row">
         <div class="cds--col-lg-16 cds--col-md-8 cds--col-sm-4">
-            <header style="margin-bottom: 3rem;">
-                <h1 class="cds--type-expressive-heading-05" style="color: var(--cds-text-primary); margin-bottom: 1rem;">
+            <header style="margin-bottom: 1.5rem;">
+                <h1 class="cds--type-expressive-heading-05" style="color: var(--cds-text-primary); margin-bottom: 0.5rem;">
                     Browse by Category
                 </h1>
                 <p class="cds--type-body-long-01" style="color: var(--cds-text-secondary);">
@@ -17,44 +17,44 @@ permalink: /category/
             </header>
 
             <!-- Category Cards -->
-            <div class="cds--row" style="margin-bottom: 3rem;">
+            <div class="cds--row" style="margin-bottom: 0.2rem;">
                 <!-- Manually define categories since posts might be empty -->
                 {% assign predefined_categories = "development,architecture-design,ai-ml-data,infrastructure-devops,culture-methods" | split: "," %}
                 
                 {% for category in predefined_categories %}
                     {% assign category_posts = site.posts | where_exp: "post", "post.categories contains category" %}
-                    <div class="cds--col-lg-8 cds--col-md-4 cds--col-sm-4" style="margin-bottom: 2rem;">
+                    <div class="cds--col-lg-8 cds--col-md-4 cds--col-sm-4" style="margin-bottom: 1rem;">
                         <div class="blog-card" style="height: 100%; display: flex; flex-direction: column;">
-                            <div style="text-align: center; padding: 1rem;">
+                            <div style="text-align: center; padding: 0.75rem;">
                                 <!-- Category Icon -->
-                                <div style="margin-bottom: 1rem;">
+                                <div style="margin-bottom: 0.2rem;">
                                     {% if category == 'development' %}
-                                        <svg width="48" height="48" viewBox="0 0 16 16" fill="#78a9ff" style="display: block; margin: 0 auto;">
+                                        <svg width="32" height="32" viewBox="0 0 16 16" fill="#78a9ff" style="display: block; margin: 0 auto;">
                                             <path d="M4.5 3L6 1.5 9.5 5 6 8.5 4.5 7 7 4.5 4.5 2zM11.5 3L10 1.5 6.5 5 10 8.5 11.5 7 9 4.5 11.5 2z"/>
                                         </svg>
                                     {% elsif category == 'architecture-design' %}
-                                        <svg width="48" height="48" viewBox="0 0 16 16" fill="#78a9ff" style="display: block; margin: 0 auto;">
+                                        <svg width="32" height="32" viewBox="0 0 16 16" fill="#78a9ff" style="display: block; margin: 0 auto;">
                                             <path d="M1 1h14v14H1V1zm1 1v12h12V2H2zm2 2h8v8H4V4zm1 1v6h6V5H5z"/>
                                         </svg>
                                     {% elsif category == 'ai-ml-data' %}
-                                        <svg width="48" height="48" viewBox="0 0 16 16" fill="#78a9ff" style="display: block; margin: 0 auto;">
+                                        <svg width="32" height="32" viewBox="0 0 16 16" fill="#78a9ff" style="display: block; margin: 0 auto;">
                                             <path d="M8 1a7 7 0 100 14A7 7 0 008 1zM3.5 8a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0z"/>
                                             <circle cx="8" cy="8" r="2"/>
                                         </svg>
                                     {% elsif category == 'infrastructure-devops' %}
-                                        <svg width="48" height="48" viewBox="0 0 16 16" fill="#78a9ff" style="display: block; margin: 0 auto;">
+                                        <svg width="32" height="32" viewBox="0 0 16 16" fill="#78a9ff" style="display: block; margin: 0 auto;">
                                             <path d="M3 1h10v2H3V1zm0 4h10v2H3V5zm0 4h10v2H3V9zm0 4h10v2H3v-2z"/>
                                             <path d="M1 2h1v12H1V2z"/>
                                         </svg>
                                     {% elsif category == 'culture-methods' %}
-                                        <svg width="48" height="48" viewBox="0 0 16 16" fill="#78a9ff" style="display: block; margin: 0 auto;">
+                                        <svg width="32" height="32" viewBox="0 0 16 16" fill="#78a9ff" style="display: block; margin: 0 auto;">
                                             <path d="M8 1a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 7a1 1 0 011-1h8a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V7z"/>
                                             <path d="M6 9h4v1H6V9zm0 2h4v1H6v-1z"/>
                                         </svg>
                                     {% endif %}
                                 </div>
                                 
-                                <h3 class="cds--type-productive-heading-03" style="color: var(--cds-text-primary); margin-bottom: 1rem;">
+                                <h3 class="cds--type-productive-heading-03" style="color: var(--cds-text-primary); margin-bottom: 0.5rem;">
                                     {% if category == 'development' %}Development
                                     {% elsif category == 'architecture-design' %}Architecture & Design
                                     {% elsif category == 'ai-ml-data' %}AI, ML & Data Engineering
@@ -62,16 +62,16 @@ permalink: /category/
                                     {% elsif category == 'culture-methods' %}Culture & Methods
                                     {% endif %}
                                 </h3>
-                        
                                 
-                                <div style="margin-bottom: 1rem;">
-                                    <span class="cds--tag cds--tag--blue">
+                                    
+                                <div style="margin-bottom: 0.25rem;">
+                                    <span class="cds--tag cds--tag--blue" style="font-size: 0.625rem; padding: 0.125rem 0.375rem;">
                                         {{ category_posts.size }} post{% if category_posts.size != 1 %}s{% endif %}
                                     </span>
                                 </div>
                                 
-                                <a href="/category/{{ category | slugify }}/" class="bx--btn bx--btn--ghost" style="color: var(--cds-link-primary);">
-                                    <svg class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 0.5rem;">
+                                <a href="/category/{{ category | slugify }}/" class="bx--btn bx--btn--ghost" style="color: var(--cds-link-primary); font-size: 0.75rem; padding: 0.25rem 0.5rem;">
+                                    <svg class="bx--btn__icon" width="12" height="12" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 0.25rem;">
                                         <path d="M11 8l-5 5-1.5-1.5L8 8 4.5 4.5 6 3l5 5z"/>
                                     </svg>
                                     View Posts
@@ -116,12 +116,41 @@ permalink: /category/
                             <div class="cds--type-body-short-01" style="color: var(--cds-text-secondary);">
                                 Tags
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </div>
+        </div>
+    </div>
+</section>
 
-            <!-- Navigation -->
+<!-- Additional CSS for compact mobile layout -->
+<style>
+@media (max-width: 768px) {
+    .cds--grid {
+        margin: 0;
+        padding: 0.5rem;
+    }
+    
+    .cds--col {
+        margin-bottom: 0.5rem;
+    }
+    
+    .category-card {
+        min-height: auto !important;
+        padding: 0.5rem !important;
+    }
+    
+    .cds--type-productive-heading-03 {
+        font-size: 0.875rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .cds--type-body-long-01 {
+        font-size: 0.625rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.5rem !important;
+    }
+}
+</style>            <!-- Navigation -->
             <div style="text-align: center;">
                 <a href="{{ "/blog/" | relative_url }}" class="bx--btn bx--btn--primary" style="margin-right: 1rem;">
                     <svg class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 0.5rem;">
