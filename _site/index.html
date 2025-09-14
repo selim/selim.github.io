@@ -559,22 +559,67 @@
             .cds--grid {
                 padding-left: 1rem;
                 padding-right: 1rem;
+                max-width: 100%;
             }
             
             .cds--content {
-                padding: 2rem 0;
+                padding: 1.5rem 0;
             }
             
+            .cds--row {
+                margin-left: -0.5rem;
+                margin-right: -0.5rem;
+            }
+            
+            .cds--col {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            
+            /* Enhanced typography for better mobile readability */
             .cds--type-productive-heading-05 {
-                font-size: 1.75rem;
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
             }
             
             .cds--type-productive-heading-04 {
-                font-size: 1.5rem;
+                font-size: 1.625rem;
+                line-height: 1.25;
+                margin-bottom: 1.25rem;
+            }
+            
+            .cds--type-productive-heading-03 {
+                font-size: 1.375rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+            }
+            
+            .cds--type-productive-heading-02 {
+                font-size: 1.25rem;
+                line-height: 1.3;
+                margin-bottom: 0.75rem;
+            }
+            
+            .cds--type-body-long-02 {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 1.25rem;
+            }
+            
+            .cds--type-body-short-02 {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .cds--type-body-short-01 {
+                font-size: 0.875rem;
+                line-height: 1.4;
             }
             
             .cds--header {
                 padding: 0 1rem;
+                height: 3rem;
             }
             
             .cds--header__menu-item {
@@ -587,8 +632,13 @@
                 margin-left: 0 !important;
             }
             
-            /* Ensure columns take full width on mobile */
+            /* Ensure columns take full width on mobile with proper spacing */
             .cds--col-lg-12 {
+                flex: 0 0 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .cds--col-sm-4 {
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
             }
@@ -602,6 +652,32 @@
             .cds--header__menu-trigger {
                 display: flex !important;
             }
+            
+            /* Blog specific mobile optimizations */
+            .blog-card {
+                margin-bottom: 1rem;
+                padding: 1rem;
+            }
+            
+            /* Footer adjustments */
+            .blog-footer {
+                margin-top: 2rem;
+                padding: 1.5rem 0;
+            }
+            
+            /* Button adjustments for mobile */
+            .cds--btn,
+            .bx--btn {
+                width: 100%;
+                max-width: none;
+                margin-bottom: 0.75rem;
+            }
+            
+            /* Tag adjustments */
+            .cds--tag {
+                margin-bottom: 0.5rem;
+                margin-right: 0.5rem;
+            }
         }
         
         @media (min-width: 769px) {
@@ -613,6 +689,50 @@
             /* Hide mobile side nav on desktop */
             .cds--side-nav--mobile {
                 display: none !important;
+            }
+        }
+        
+        /* Extra small mobile devices (iPhone SE, etc.) */
+        @media (max-width: 480px) {
+            .cds--grid {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            .cds--content {
+                padding: 1rem 0;
+            }
+            
+            .cds--type-productive-heading-05 {
+                font-size: 1.75rem;
+                line-height: 1.15;
+            }
+            
+            .cds--type-productive-heading-04 {
+                font-size: 1.5rem;
+            }
+            
+            .cds--type-productive-heading-03 {
+                font-size: 1.25rem;
+            }
+            
+            .cds--header {
+                padding: 0 0.75rem;
+            }
+            
+            .blog-card {
+                padding: 0.75rem;
+            }
+        }
+        
+        /* Large mobile devices and small tablets */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .cds--type-productive-heading-05 {
+                font-size: 2.25rem;
+            }
+            
+            .cds--type-productive-heading-04 {
+                font-size: 1.875rem;
             }
         }
         
