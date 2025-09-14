@@ -1,0 +1,128 @@
+---
+layout: default
+---
+
+<!-- Post Header -->
+<header style="padding: 3rem 0 2rem 0; border-bottom: 1px solid var(--cds-border-subtle);">
+    <div class="cds--grid">
+        <div class="cds--row">
+            <div class="cds--col cds--col-sm-4 cds--col-md-8 cds--col-lg-12 cds--offset-lg-2">
+                <h1 class="cds--type-productive-heading-05 blog-post-title">
+                    {{ page.title | escape }}
+                </h1>
+                
+                <div class="blog-post-meta cds--type-body-short-01" style="margin-top: 1rem;">
+                    <time datetime="{{ page.date | date_to_xmlschema }}">
+                        {{ page.date | date: "%B %d, %Y" }}
+                    </time>
+                    {% if page.author %}
+                    <span> • by {{ page.author }}</span>
+                    {% endif %}
+                    {% if page.categories %}
+                    <span> • in 
+                        {% for category in page.categories %}
+                            <a href="/category/{{ category | slugify }}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+                        {% endfor %}
+                    </span>
+                    {% endif %}
+                </div>
+                
+                {% if page.tags %}
+                <div style="margin-top: 1.5rem;">
+                    <div class="cds--type-label-01" style="color: var(--cds-text-secondary); margin-bottom: 0.5rem;">
+                        Tags:
+                    </div>
+                    {% for tag in page.tags %}
+                    <span class="cds--tag cds--tag--gray" style="margin-right: 0.5rem; margin-bottom: 0.5rem;">
+                        {{ tag }}
+                    </span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Post Content -->
+<div class="cds--grid">
+    <div class="cds--row">
+        <div class="cds--col cds--col-sm-4 cds--col-md-8 cds--col-lg-12 cds--offset-lg-2">
+            <!-- Post Content Card -->
+            <article class="blog-card" style="margin: 3rem 0;">
+                <div class="cds--type-body-long-02" style="color: var(--cds-text-secondary);">
+                    {{ content }}
+                </div>
+            </article>
+
+            <!-- Post Navigation -->
+            <nav style="margin: 3rem 0;">
+                <div class="cds--row">
+                    <div class="cds--col cds--col-sm-4 cds--col-md-4 cds--col-lg-6">
+                        {% if page.previous.url %}
+                        <a href="{{ page.previous.url | relative_url }}" style="display: flex; align-items: center; padding: 1rem; background-color: var(--cds-layer); border: 1px solid var(--cds-border-subtle); color: var(--cds-text-secondary); text-decoration: none; width: 100%; margin-bottom: 1rem; transition: background-color 110ms;">
+                            <div style="margin-right: 0.5rem;">←</div>
+                            <div>
+                                <div class="cds--type-caption-01" style="color: var(--cds-text-helper);">Previous</div>
+                                <div class="cds--type-body-short-01">{{ page.previous.title | truncate: 30 }}</div>
+                            </div>
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="cds--col cds--col-sm-4 cds--col-md-4 cds--col-lg-6">
+                        {% if page.next.url %}
+                        <a href="{{ page.next.url | relative_url }}" style="display: flex; align-items: center; justify-content: flex-end; padding: 1rem; background-color: var(--cds-layer); border: 1px solid var(--cds-border-subtle); color: var(--cds-text-secondary); text-decoration: none; width: 100%; transition: background-color 110ms;">
+                            <div style="text-align: right;">
+                                <div class="cds--type-caption-01" style="color: var(--cds-text-helper);">Next</div>
+                                <div class="cds--type-body-short-01">{{ page.next.title | truncate: 30 }}</div>
+                            </div>
+                            <div style="margin-left: 0.5rem;">→</div>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Related Posts -->
+            {% assign related_posts = site.related_posts | limit: 3 %}
+            {% if related_posts.size > 0 %}
+            <section style="margin: 3rem 0;">
+                <h2 class="cds--type-productive-heading-04" style="color: var(--cds-text-primary); margin-bottom: 2rem;">
+                    Related Posts
+                </h2>
+                <div class="cds--row">
+                    {% for post in related_posts %}
+                    <div class="cds--col cds--col-sm-4 cds--col-md-8 cds--col-lg-4" style="margin-bottom: 1rem;">
+                        <article class="blog-card" style="height: 100%;">
+                            <h3 class="cds--type-productive-heading-03">
+                                <a href="{{ post.url | relative_url }}" style="color: var(--cds-text-primary); text-decoration: none;">
+                                    {{ post.title | escape | truncate: 40 }}
+                                </a>
+                            </h3>
+                            <div class="blog-post-meta cds--type-caption-01" style="margin-top: 1rem;">
+                                <time datetime="{{ post.date | date_to_xmlschema }}">
+                                    {{ post.date | date: "%b %d, %Y" }}
+                                </time>
+                            </div>
+                            {% if post.excerpt %}
+                            <p class="cds--type-body-short-01 blog-post-excerpt" style="margin-top: 0.5rem;">
+                                {{ post.excerpt | strip_html | truncate: 100 }}
+                            </p>
+                            {% endif %}
+                        </article>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+
+            <!-- Back to Blog -->
+            <div style="text-align: center; margin: 3rem 0;">
+                <a href="{{ "/" | relative_url }}" style="display: inline-flex; align-items: center; padding: 0.75rem 1rem; background-color: var(--cds-layer-accent); border: 1px solid var(--cds-border-subtle); color: var(--cds-text-primary); text-decoration: none; transition: background-color 110ms;">
+                    <span style="margin-right: 0.5rem;">←</span>
+                    Back to Blog
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

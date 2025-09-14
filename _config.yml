@@ -1,0 +1,46 @@
+# Site settings
+title: Selim BAĞCILAR
+description: >-
+  A space for exploring software architecture, development, infrastructure and the best practices that make technology work better.
+baseurl: ""
+url: "https://selim.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - agents.md
+
+# Pagination (disabled for now)
+# paginate: 5
+# paginate_path: "/page:num/"
+
+# Author
+author:
+  name: Selim BAĞCILAR
+
+# Social links (optional)
+github_username: selim
+
+# Timezone
+timezone: America/New_York
+
+# Permalink structure
+permalink: /:year/:month/:day/:title/
+
+# Carbon theme settings
+carbon_theme: "g100" # Dark theme

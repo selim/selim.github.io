@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO -->
+    <title>{% if page.title %}{{ page.title | escape }} | {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+    
+    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N1NGZ0GHMX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-N1NGZ0GHMX');
+    </script>
+    
+    <!-- Carbon Design System v11 - Official Implementation -->
+    <link rel="stylesheet" href="https://unpkg.com/@carbon/styles/css/styles.min.css">
+    
+    <style>
+        /* Apply Gray 100 theme - Official Carbon Dark Theme */
+        :root {
+            /* Background tokens */
+            --cds-background: #161616;          /* Gray 100 - global background */
+            --cds-layer: #262626;               /* Gray 90 - layer 01 */
+            --cds-layer-accent: #393939;        /* Gray 80 - layer 02 */
+            --cds-layer-accent-02: #525252;     /* Gray 70 - layer 03 */
+            --cds-field: #262626;               /* Gray 90 - field backgrounds */
+            
+            /* Border tokens */
+            --cds-border-subtle: #393939;       /* Gray 80 - subtle borders */
+            --cds-border-strong: #6f6f6f;       /* Gray 60 - strong borders */
+            --cds-border-inverse: #161616;      /* Gray 100 - inverse borders */
+            
+            /* Text tokens */
+            --cds-text-primary: #f4f4f4;        /* Gray 10 - primary text */
+            --cds-text-secondary: #c6c6c6;      /* Gray 30 - secondary text */
+            --cds-text-placeholder: #6f6f6f;    /* Gray 60 - placeholder text */
+            --cds-text-helper: #8d8d8d;         /* Gray 50 - helper text */
+            --cds-text-error: #fa4d56;          /* Red 50 - error text */
+            --cds-text-inverse: #161616;        /* Gray 100 - inverse text */
+            
+            /* Icon tokens */
+            --cds-icon-primary: #f4f4f4;        /* Gray 10 - primary icons */
+            --cds-icon-secondary: #c6c6c6;      /* Gray 30 - secondary icons */
+            --cds-icon-inverse: #161616;        /* Gray 100 - inverse icons */
+            
+            /* Link tokens */
+            --cds-link-primary: #78a9ff;        /* Blue 40 - primary links */
+            --cds-link-secondary: #a6c8ff;      /* Blue 30 - secondary links */
+            --cds-link-visited: #be95ff;        /* Purple 40 - visited links */
+            --cds-link-inverse: #0f62fe;        /* Blue 60 - inverse links */
+            
+            /* Interactive tokens */
+            --cds-interactive: #0f62fe;         /* Blue 60 - interactive elements */
+            --cds-focus: #ffffff;               /* White - focus indicator */
+            --cds-focus-inset: #161616;         /* Gray 100 - focus inset */
+            --cds-focus-inverse: #0f62fe;       /* Blue 60 - inverse focus */
+            
+            /* Support tokens */
+            --cds-support-error: #fa4d56;       /* Red 50 - error */
+            --cds-support-success: #42be65;     /* Green 50 - success */
+            --cds-support-warning: #f1c21b;     /* Yellow 30 - warning */
+            --cds-support-info: #4589ff;        /* Blue 50 - info */
+            
+            /* Hover tokens */
+            --cds-layer-hover: #4c4c4c;         /* Gray 80 hover */
+            --cds-layer-active: #6f6f6f;        /* Gray 60 active */
+            --cds-field-hover: #4c4c4c;         /* Gray 80 hover */
+            --cds-background-hover: #4c4c4c;    /* Gray 80 hover */
+            --cds-link-primary-hover: #a6c8ff;  /* Blue 30 hover */
+            
+            /* Button tokens */
+            --cds-button-primary: #0f62fe;         /* Blue 60 - primary button */
+            --cds-button-primary-hover: #0353e9;   /* Blue 70 - primary hover */
+            --cds-button-primary-active: #002d9c;  /* Blue 80 - primary active */
+            
+            --cds-button-secondary: #393939;       /* Gray 80 - secondary button */
+            --cds-button-secondary-hover: #4c4c4c; /* Gray 70 - secondary hover */
+            --cds-button-secondary-active: #6f6f6f; /* Gray 60 - secondary active */
+            
+            --cds-button-tertiary: #0f62fe;        /* Blue 60 - tertiary button */
+            --cds-button-tertiary-hover: #0353e9;  /* Blue 70 - tertiary hover */
+            --cds-button-tertiary-active: #002d9c; /* Blue 80 - tertiary active */
+            
+            --cds-button-danger-primary: #da1e28;  /* Red 60 - danger button */
+            --cds-button-danger-hover: #ba1b23;    /* Red 70 - danger hover */
+            --cds-button-danger-active: #750e13;   /* Red 80 - danger active */
+            
+            --cds-button-disabled: #c6c6c6;        /* Gray 30 - disabled button */
+            
+            /* Tag tokens */
+            --cds-tag-background-blue: #002d9c;    /* Blue 80 - tag background */
+            --cds-tag-color-blue: #a6c8ff;         /* Blue 30 - tag text */
+            --cds-tag-background-gray: #6f6f6f;    /* Gray 60 - tag background */
+            --cds-tag-color-gray: #f4f4f4;         /* Gray 10 - tag text */
+            
+            /* Text on color tokens */
+            --cds-text-on-color: #ffffff;          /* White text on colored backgrounds */
+            --cds-text-on-color-disabled: #8d8d8d; /* Gray 50 - disabled text on color */
+        }
+        
+        /* Base styles using Carbon tokens */
+        * {
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.29;
+            letter-spacing: 0.16px;
+            background-color: var(--cds-background);
+            color: var(--cds-text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Carbon Grid System */
+        .cds--grid {
+            width: 100%;
+            max-width: 1584px;
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .cds--row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -1rem;
+            margin-right: -1rem;
+        }
+        
+        .cds--col {
+            position: relative;
+            width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        /* Column widths for 16-column grid */
+        .cds--col-sm-4 { flex: 0 0 100%; max-width: 100%; }
+        
+        @media (min-width: 672px) {
+            .cds--col-md-8 { flex: 0 0 100%; max-width: 100%; }
+        }
+        
+        @media (min-width: 1056px) {
+            .cds--col-lg-12 { flex: 0 0 75%; max-width: 75%; }
+            .cds--col-lg-16 { flex: 0 0 100%; max-width: 100%; }
+            .cds--offset-lg-2 { margin-left: 12.5%; }
+        }
+        
+        /* Header using Carbon UI Shell principles */
+        .cds--header {
+            position: relative;
+            z-index: 8000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 3rem;
+            background-color: var(--cds-background);
+            border-bottom: 1px solid var(--cds-border-subtle);
+            padding: 0 1rem;
+        }
+        
+        .cds--header__name {
+            display: flex;
+            align-items: center;
+            height: 3rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .cds--header__name a {
+            color: var(--cds-text-primary);
+            text-decoration: none;
+            padding: 0 1rem;
+            margin-left: -1rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            transition: background-color 110ms;
+        }
+        
+        .cds--header__name a:visited {
+            color: var(--cds-text-primary);
+        }
+        
+        .cds--header__name a:hover {
+            background-color: var(--cds-layer-hover);
+        }
+        
+        .cds--header__nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .cds--header__menu-bar {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        
+        .cds--header__menu-item {
+            display: flex;
+            align-items: center;
+            height: 3rem;
+            padding: 0 1rem;
+            color: var(--cds-text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 400;
+            transition: all 110ms;
+        }
+        
+        .cds--header__menu-item:hover {
+            background-color: var(--cds-layer-hover);
+            color: var(--cds-text-primary);
+        }
+        
+        /* Typography scale using Carbon tokens */
+        .cds--type-productive-heading-05 {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.25;
+            letter-spacing: 0;
+        }
+        
+        .cds--type-productive-heading-04 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            line-height: 1.29;
+            letter-spacing: 0;
+        }
+        
+        .cds--type-productive-heading-03 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1.4;
+            letter-spacing: 0;
+        }
+        
+        .cds--type-productive-heading-02 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.22;
+            letter-spacing: 0;
+        }
+        
+        .cds--type-body-long-02 {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0;
+        }
+        
+        .cds--type-body-short-02 {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.375;
+            letter-spacing: 0;
+        }
+        
+        .cds--type-body-short-01 {
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.29;
+            letter-spacing: 0.16px;
+        }
+        
+        .cds--type-caption-01 {
+            font-size: 0.75rem;
+            font-weight: 400;
+            line-height: 1.34;
+            letter-spacing: 0.32px;
+        }
+        
+        /* Links */
+        a {
+            color: var(--cds-link-primary);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: var(--cds-link-primary-hover);
+            text-decoration: underline;
+        }
+        
+        a:visited {
+            color: var(--cds-link-visited);
+        }
+        
+        /* Content area */
+        .cds--content {
+            padding: 3rem 0;
+            flex: 1;
+        }
+        
+        /* Button styles - Carbon v11 and backward compatibility */
+        .cds--btn,
+        .bx--btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.125rem;
+            letter-spacing: 0.16px;
+            min-height: 3rem;
+            padding: 0.875rem 1rem;
+            border-radius: 0;
+            cursor: pointer;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: all 70ms cubic-bezier(0.2, 0, 0.38, 0.9);
+            position: relative;
+            max-width: 20rem;
+            vertical-align: top;
+        }
+        
+        /* Primary button */
+        .cds--btn--primary,
+        .bx--btn--primary {
+            background-color: var(--cds-button-primary);
+            border-color: var(--cds-button-primary);
+            color: var(--cds-text-on-color);
+        }
+        
+        .cds--btn--primary:hover,
+        .bx--btn--primary:hover {
+            background-color: var(--cds-button-primary-hover);
+            border-color: var(--cds-button-primary-hover);
+        }
+        
+        .cds--btn--primary:active,
+        .bx--btn--primary:active {
+            background-color: var(--cds-button-primary-active);
+            border-color: var(--cds-button-primary-active);
+        }
+        
+        /* Secondary button */
+        .cds--btn--secondary,
+        .bx--btn--secondary {
+            background-color: var(--cds-button-secondary);
+            border-color: var(--cds-button-secondary);
+            color: var(--cds-text-on-color);
+        }
+        
+        .cds--btn--secondary:hover,
+        .bx--btn--secondary:hover {
+            background-color: var(--cds-button-secondary-hover);
+            border-color: var(--cds-button-secondary-hover);
+        }
+        
+        .cds--btn--secondary:active,
+        .bx--btn--secondary:active {
+            background-color: var(--cds-button-secondary-active);
+            border-color: var(--cds-button-secondary-active);
+        }
+        
+        /* Tertiary button */
+        .cds--btn--tertiary,
+        .bx--btn--tertiary {
+            background-color: transparent;
+            border-color: var(--cds-button-tertiary);
+            color: var(--cds-button-tertiary);
+        }
+        
+        .cds--btn--tertiary:hover,
+        .bx--btn--tertiary:hover {
+            background-color: var(--cds-button-tertiary-hover);
+            border-color: var(--cds-button-tertiary-hover);
+            color: var(--cds-text-inverse);
+        }
+        
+        .cds--btn--tertiary:active,
+        .bx--btn--tertiary:active {
+            background-color: var(--cds-button-tertiary-active);
+            border-color: var(--cds-button-tertiary-active);
+        }
+        
+        /* Ghost button */
+        .cds--btn--ghost,
+        .bx--btn--ghost {
+            background-color: transparent;
+            border-color: transparent;
+            color: var(--cds-link-primary);
+            padding: 0.875rem 1rem;
+        }
+        
+        .cds--btn--ghost:hover,
+        .bx--btn--ghost:hover {
+            background-color: var(--cds-layer-hover);
+            color: var(--cds-link-primary-hover);
+        }
+        
+        .cds--btn--ghost:active,
+        .bx--btn--ghost:active {
+            background-color: var(--cds-layer-active);
+        }
+        
+        /* Danger button */
+        .cds--btn--danger,
+        .bx--btn--danger {
+            background-color: var(--cds-button-danger-primary);
+            border-color: var(--cds-button-danger-primary);
+            color: var(--cds-text-on-color);
+        }
+        
+        .cds--btn--danger:hover,
+        .bx--btn--danger:hover {
+            background-color: var(--cds-button-danger-hover);
+            border-color: var(--cds-button-danger-hover);
+        }
+        
+        .cds--btn--danger:active,
+        .bx--btn--danger:active {
+            background-color: var(--cds-button-danger-active);
+            border-color: var(--cds-button-danger-active);
+        }
+        
+        /* Button icons */
+        .cds--btn__icon,
+        .bx--btn__icon {
+            margin-left: 0.5rem;
+            flex-shrink: 0;
+        }
+        
+        /* Small button variant */
+        .cds--btn--sm,
+        .bx--btn--sm {
+            min-height: 2rem;
+            padding: 0.375rem 1rem;
+            font-size: 0.75rem;
+            line-height: 1rem;
+        }
+        
+        /* Large button variant */
+        .cds--btn--lg,
+        .bx--btn--lg {
+            min-height: 4rem;
+            padding: 1rem 1rem;
+            font-size: 1rem;
+            line-height: 1.25rem;
+        }
+        
+        /* Disabled state */
+        .cds--btn:disabled,
+        .bx--btn:disabled,
+        .cds--btn.cds--btn--disabled,
+        .bx--btn.bx--btn--disabled {
+            background-color: var(--cds-button-disabled);
+            border-color: var(--cds-button-disabled);
+            color: var(--cds-text-disabled);
+            cursor: not-allowed;
+        }
+        
+        /* Focus styles */
+        .cds--btn:focus,
+        .bx--btn:focus {
+            outline: 2px solid var(--cds-focus);
+            outline-offset: -2px;
+        }
+        
+        /* Tag styles */
+        .cds--tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0;
+            font-size: 0.75rem;
+            font-weight: 400;
+            line-height: 1rem;
+            letter-spacing: 0.32px;
+            white-space: nowrap;
+            cursor: default;
+        }
+        
+        .cds--tag--blue {
+            background-color: var(--cds-tag-background-blue);
+            color: var(--cds-tag-color-blue);
+        }
+        
+        .cds--tag--gray {
+            background-color: var(--cds-tag-background-gray);
+            color: var(--cds-tag-color-gray);
+        }
+        
+        /* Blog-specific components */
+        .blog-card {
+            background-color: var(--cds-layer);
+            border: 1px solid var(--cds-border-subtle);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: background-color 110ms;
+        }
+        
+        .blog-card:hover {
+            background-color: var(--cds-layer-hover);
+        }
+        
+        .blog-post-meta {
+            color: var(--cds-text-helper);
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post-title {
+            color: var(--cds-text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post-excerpt {
+            color: var(--cds-text-secondary);
+        }
+        
+        /* Footer */
+        .blog-footer {
+            background-color: var(--cds-layer);
+            border-top: 1px solid var(--cds-border-subtle);
+            margin-top: 4rem;
+            padding: 2rem 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 671px) {
+            .cds--grid {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .cds--content {
+                padding: 2rem 0;
+            }
+            
+            .cds--type-productive-heading-05 {
+                font-size: 1.75rem;
+            }
+            
+            .cds--type-productive-heading-04 {
+                font-size: 1.5rem;
+            }
+            
+            .cds--header {
+                padding: 0 1rem;
+            }
+            
+            .cds--header__menu-item {
+                padding: 0 0.75rem;
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (min-width: 672px) and (max-width: 1055px) {
+            .cds--content {
+                padding: 2.5rem 0;
+            }
+        }
+    </style>
+    
+    <!-- Jekyll SEO tag -->
+    {% seo %}
+    
+    <!-- Feed -->
+    {% feed_meta %}
+</head>
+
+<body>
+    <!-- Carbon UI Shell Header -->
+    <header class="cds--header" role="banner">
+        <div class="cds--header__name">
+            <a href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        </div>
+                <nav class="cds--header__nav" aria-label="Main navigation">
+            <ul class="cds--header__menu-bar">
+                <li>
+                    <a class="cds--header__menu-item" href="{{ "/" | relative_url }}">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 0.5rem;">
+                            <path d="M8 1L1 6v9h4V9h6v6h4V6L8 1zm0 2.53L13 8v5h-2V9H5v4H3V8l5-4.47z"/>
+                        </svg>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="cds--header__menu-item" href="{{ "/blog/" | relative_url }}">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 0.5rem;">
+                            <path d="M4 3h8v1H4V3zm0 3h8v1H4V6zm0 3h6v1H4V9zm0 3h4v1H4v-1zM2 3v10h12V3H2zm11 9H3V4h10v8z"/>
+                        </svg>
+                        <span>Blog</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="cds--header__menu-item" href="{{ "/category/" | relative_url }}">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 0.5rem;">
+                            <path d="M1 1h6v6H1V1zm8 0h6v6H9V1zM1 9h6v6H1V9zm8 0h6v6H9V9z"/>
+                        </svg>
+                        <span>Categories</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="cds--header__menu-item" href="{{ "/about" | relative_url }}">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 0.5rem;">
+                            <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/>
+                            <path d="M7 4h2v2H7zM7 7h2v5H7z"/>
+                        </svg>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="cds--header__menu-item" href="{{ "/contact" | relative_url }}">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 0.5rem;">
+                            <path d="M1 3h14c.6 0 1 .4 1 1v8c0 .6-.4 1-1 1H1c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1zm0 1v.5l7 3.5 7-3.5V4H1zm0 2v6h14V6L8 9.5 1 6z"/>
+                        </svg>
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="cds--content">
+        <div class="cds--grid">
+            <div class="cds--row">
+                <div class="cds--col cds--col-sm-4 cds--col-md-8 cds--col-lg-12 cds--offset-lg-2">
+                    {{ content }}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="blog-footer">
+        <div class="cds--grid">
+            <div class="cds--row">
+                <div class="cds--col cds--col-sm-4 cds--col-md-8 cds--col-lg-16">
+                    <div style="text-align: center;">
+                        <p class="cds--type-body-short-01" style="color: var(--cds-text-helper); display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem;">
+                            <span>© {{ 'now' | date: "%Y" }} {{ site.title | escape }}. Built with Jekyll and Carbon Design System.</span>
+                            <a href="https://selim.github.io/feed" target="_blank" style="color: var(--cds-link-primary); text-decoration: none; display: inline-flex; align-items: center; font-size: 0.875rem;">
+                                RSS
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
