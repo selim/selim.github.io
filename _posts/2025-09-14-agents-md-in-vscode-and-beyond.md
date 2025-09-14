@@ -35,6 +35,9 @@ The beauty of AGENTS.md lies in its universal compatibility. The format is desig
 
 This standardization means you can write one AGENTS.md file and use it across multiple AI development tools, eliminating the need for tool-specific configuration files.
 
+> **Note on copilot-instructions.md:**
+> For GitHub Copilot, you may also use a `.github/copilot-instructions.md` file. This file is specific to Copilot and is only recognized by Copilot agents, whereas AGENTS.md is designed as a universal, cross-tool standard. You can include Copilot-specific rules and instructions in copilot-instructions.md, and use AGENTS.md for guidance that applies to all AI coding agents and tools.
+
 ## Best Practices for AGENTS.md
 
 Based on community feedback and real-world usage:
